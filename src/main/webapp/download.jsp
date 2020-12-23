@@ -1,14 +1,25 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Download</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body>
+    <%
+        Object role = session.getAttribute("role");
+        request.setAttribute("role", role);
+    %>
+    <c:choose>
+        <c:when test="${role == GUEST}">
+            <a href="login.jsp">XML</a>
+        </c:when>
+        <c:otherwise>
+            <a href="download/private.xml">XML</a>
+        </c:otherwise>
+    </c:choose>
+
     <a href="download/public.txt">TEXT</a>
-    <a href="download/private.xml">XML</a>
 </body>
 </html>
