@@ -8,10 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Arrays;
 
 @WebServlet("download/*")
-public class DownloadServlet extends HttpServlet {
+public class DownloadService extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String file = cutFileName(request);
         String path = "E:\\Projects\\servlet-task\\src\\main\\filepath\\";
@@ -34,6 +33,7 @@ public class DownloadServlet extends HttpServlet {
         while ((i = fileInputStream.read()) != -1) {
             out.write(i);
         }
+
         fileInputStream.close();
         out.close();
     }
